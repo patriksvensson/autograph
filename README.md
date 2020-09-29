@@ -15,6 +15,10 @@ from .NET projects.
 USAGE:
     dotnet autograph <PROJECTS> [OPTIONS]
 
+EXAMPLES:
+    dotnet autograph foo.csproj
+    dotnet autograph foo.csproj bar.csproj --output graph.dot
+
 ARGUMENTS:
     <PROJECTS>    The project(s) to build a graph from
 
