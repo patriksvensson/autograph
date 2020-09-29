@@ -9,6 +9,20 @@ from .NET projects.
 > dotnet tool install -g dotnet-autograph
 ```
 
+## Usage
+
+```
+USAGE:
+    dotnet autograph <PROJECTS> [OPTIONS]
+
+ARGUMENTS:
+    <PROJECTS>    The project(s) to build a graph from
+
+OPTIONS:
+    -h, --help               Prints help information
+        --output <OUTPUT>    The filename of the resulting graph
+```
+
 ## Example
 
 To create a dot graph for project `~/source/foo/foo.csproj` 
