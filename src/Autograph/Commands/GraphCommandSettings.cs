@@ -8,10 +8,12 @@ namespace Autograph
     {
         [CommandArgument(0, "<PROJECTS>")]
         [TypeConverter(typeof(FilePathConverter))]
+        [Description("The project(s) to build a graph from")]
         public FilePath[] Projects { get; set; }
 
         [CommandOption("--output <OUTPUT>")]
         [TypeConverter(typeof(FilePathConverter))]
+        [Description("The filename of the resulting graph")]
         public FilePath Output { get; set; }
     }
 }

@@ -10,6 +10,15 @@ namespace Autograph
         {
             var registrar = new AutofacTypeRegistrar(BuildContainer());
             var app = new CommandApp<GraphCommand>(registrar);
+            app.Configure(config =>
+            {
+                config.SetApplicationName("dotnet autograph");
+
+                config.ValidateExamples();
+                config.AddExample(new[] { "foo.csproj", });
+                config.AddExample(new[] { "foo.csproj", "bar.csproj", "--output", "graph.dot" });
+            });
+
             return app.Run(args);
         }
 
