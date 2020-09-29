@@ -3,13 +3,19 @@
 A utility that creates [dot graphs](https://graphviz.org/doc/info/lang.html) 
 from .NET projects.
 
-## Usage
+## Installation
+
+```
+> dotnet tool install -g dotnet-autograph
+```
+
+## Example
 
 To create a dot graph for project `~/source/foo/foo.csproj` 
 in the current working directory:
 
 ```
-> dotnet autograph ~/source/foo/foo.csproj
+> dotnet autograph ~/source/foo/foo.csproj 
 ```
 
 You can also specify the output path:
@@ -17,6 +23,10 @@ You can also specify the output path:
 ```
 > dotnet autograph ~/source/foo/foo.csproj --output ~/foo.dot
 ```
+
+This will output something like this:
+
+![example](res/graph.png)
 
 ## Building
 
