@@ -1,18 +1,16 @@
 using System;
-using System.IO;
-using System.Text;
+using GiGraph.Dot.Entities.Graphs;
+using GiGraph.Dot.Extensions;
 using Spectre.IO;
 
 namespace Autograph
 {
     public sealed class GraphWriter
     {
-        private readonly IFileSystem _fileSystem;
         private readonly IEnvironment _environment;
 
-        public GraphWriter(IFileSystem fileSystem, IEnvironment environment)
+        public GraphWriter(IEnvironment environment)
         {
-            _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
 
@@ -23,27 +21,14 @@ namespace Autograph
                 throw new ArgumentNullException(nameof(graph));
             }
 
-            path ??= new FilePath("graph.dot").MakeAbsolute(_environment);
-
-            using (var stream = _fileSystem.File.OpenWrite(path))
-            using (var writer = new StreamWriter(stream))
-            {
-                writer.Write(BuildDotGraph(graph));
-            }
-        }
-
-        private static StringBuilder BuildDotGraph(DirectedGraph<Project> graph)
-        {
-            var output = new StringBuilder();
-            output.AppendLine("digraph sample {");
-
+            var dot = new DotGraph(isDirected: true);
             foreach (var edge in graph.Edges)
             {
-                output.Append('\"').Append(edge.From.Name).Append("\" -> \"").Append(edge.To.Name).AppendLine("\"");
+                dot.Edges.Add(edge.From.Name, edge.To.Name);
             }
 
-            output.AppendLine("}");
-            return output;
+            path ??= new FilePath("graph.dot").MakeAbsolute(_environment);
+            dot.SaveToFile(path.FullPath);
         }
     }
 }

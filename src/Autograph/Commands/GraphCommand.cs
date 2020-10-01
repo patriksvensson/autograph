@@ -55,7 +55,7 @@ namespace Autograph
             }));
 
             // Write the graph
-            var writer = new GraphWriter(_fileSystem, _environment);
+            var writer = new GraphWriter(_environment);
             writer.Write(settings.Output, graph);
 
             return 0;

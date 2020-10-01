@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="5.2.0" />
+    <PackageReference Include="GiGraph.Dot" Version="1.5.1" />
     <PackageReference Include="Spectre.Cli" Version="0.43.0" />
     <PackageReference Include="Spectre.IO" Version="0.1.0" />
   </ItemGroup>
